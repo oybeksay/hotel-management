@@ -36,8 +36,8 @@ public class HotelController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Hotel> updateHotel(@PathVariable Integer id, @RequestBody HotelDTO hotelDTO) {
-        return ResponseEntity.ok(hotelService.updateHotel(hotelDTO));
+    public ResponseEntity<Hotel> updateHotel(@RequestBody Hotel hotel) {
+        return ResponseEntity.ok(hotelService.updateHotel(hotel));
     }
 
     @DeleteMapping("/{id}")

@@ -34,8 +34,8 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Integer id, @RequestBody OrderDTO orderDTO) {
-        return ResponseEntity.ok(orderService.updateOrder(orderDTO));
+    public ResponseEntity<Order> updateOrder(@RequestBody Order order) {
+        return ResponseEntity.ok(orderService.updateOrder(order));
     }
 
     @DeleteMapping("/{id}")

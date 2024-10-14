@@ -35,8 +35,8 @@ public class GuestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Guest> updateGuest(@PathVariable int id, @RequestBody GuestDTO guestDTO) {
-        return ResponseEntity.ok(guestService.updateGuest(guestDTO));
+    public ResponseEntity<Guest> updateGuest(@RequestBody Guest guest) {
+        return ResponseEntity.ok(guestService.updateGuest(guest));
     }
 
     @DeleteMapping("/{id}")

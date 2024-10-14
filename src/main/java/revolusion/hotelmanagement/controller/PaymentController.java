@@ -37,8 +37,8 @@ public class PaymentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Payment> updatePayment(@PathVariable Integer id, @RequestBody PaymentDTO paymentDTO) {
-        return ResponseEntity.ok(paymentService.updatePayment(paymentDTO, id));
+    public ResponseEntity<Payment> updatePayment(@RequestBody Payment payment) {
+        return ResponseEntity.ok(paymentService.updatePayment(payment));
     }
 
     @DeleteMapping("/{id}")

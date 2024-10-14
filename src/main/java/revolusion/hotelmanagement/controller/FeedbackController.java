@@ -33,8 +33,8 @@ public class FeedbackController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Feedback> update(@PathVariable Integer id, @RequestBody FeedbackDTO feedbackDTO) {
-        return ResponseEntity.ok(feedbackService.updateFeedback(feedbackDTO));
+    public ResponseEntity<Feedback> update(@RequestBody Feedback feedback) {
+        return ResponseEntity.ok(feedbackService.updateFeedback(feedback));
     }
 
     @DeleteMapping("/{id}")
