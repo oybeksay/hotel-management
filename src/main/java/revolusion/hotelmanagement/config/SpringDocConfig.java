@@ -36,7 +36,7 @@ public class SpringDocConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("Hotel Management API")
-                        .description("Simple Spring Boot Post Blog Application")
+                        .description("Simple Spring Boot Hotel Management Application")
                         .version("14")
                         .contact(new Contact()
                                 .name("Oybek Saydaliyev")
