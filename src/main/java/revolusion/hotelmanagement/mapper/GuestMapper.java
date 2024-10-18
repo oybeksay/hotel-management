@@ -6,5 +6,7 @@ import revolusion.hotelmanagement.entity.Guest;
 
 @Mapper(componentModel = "spring")
 public interface GuestMapper {
+
     Guest fromDTO(GuestDTO guestDTO);
+
 }

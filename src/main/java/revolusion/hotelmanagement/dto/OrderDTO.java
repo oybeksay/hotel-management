@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import revolusion.hotelmanagement.domein.OrderStatus;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,5 +18,4 @@ public class OrderDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private OrderStatus status;
-    private Double totalAmount;
 }

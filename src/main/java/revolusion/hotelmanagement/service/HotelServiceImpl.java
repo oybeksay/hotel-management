@@ -9,6 +9,8 @@ import revolusion.hotelmanagement.entity.Hotel;
 import revolusion.hotelmanagement.mapper.HotelMapper;
 import revolusion.hotelmanagement.repository.HotelRepository;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -37,7 +39,13 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public Page<Hotel> getAllHotels(Pageable pageable) {
+    public Page<Hotel> getPagedHotels(Pageable pageable) {
         return hotelRepository.findAll(pageable);
+    }
+
+
+    @Override
+    public List<Hotel> getHotelByNameOrRating(String name, String address, Integer rating) {
+        return hotelRepository.findHotelsByFilter(rating, address, name);
     }
 }

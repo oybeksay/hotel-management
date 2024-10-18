@@ -13,6 +13,9 @@ import revolusion.hotelmanagement.repository.GuestRepository;
 import revolusion.hotelmanagement.repository.OrderRepository;
 import revolusion.hotelmanagement.repository.RoomRepository;
 
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -26,7 +29,17 @@ public class OrderServiceImpl implements OrderService {
     public Order saveOrder(OrderDTO orderDTO) {
         Room room = roomRepository.findById(orderDTO.getRoomId()).orElseThrow(() -> new RuntimeException("Room not found"));
         Guest guest = guestRepository.findById(orderDTO.getGuestId()).orElseThrow(() -> new RuntimeException("Guest not found"));
+        List<Order> conflictingOrders = orderRepository.findConflictingOrders(
+                orderDTO.getRoomId(),
+                orderDTO.getStartDate(),
+                orderDTO.getEndDate());
+
+        if (!conflictingOrders.isEmpty()) {
+            throw new RuntimeException("Conflicting orders found");
+        }
+
         Order order = orderMapper.fromDTO(orderDTO, guest, room);
+        order.setTotalAmount(calculateTotalAmount(orderDTO));
         return orderRepository.save(order);
     }
 
@@ -46,7 +59,25 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Page<Order> getAllOrder(Pageable pageable) {
+    public Page<Order> getAllOrderByPaged(Pageable pageable) {
         return orderRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Order> getOrdersByGuestId(Integer id) {
+        return orderRepository.findByGuest_Id(id);
+    }
+
+    @Override
+    public double calculateTotalAmount(OrderDTO orderDTO) {
+        long numberOfNights = ChronoUnit.DAYS.between(orderDTO.getStartDate(), orderDTO.getEndDate());
+        Room room = roomRepository.findById(orderDTO.getRoomId()).orElse(null);
+        assert room != null;
+        return numberOfNights * room.getPricePerNight();
+    }
+
+    @Override
+    public List<Order> getAllOrder() {
+        return orderRepository.findAll();
     }
 }

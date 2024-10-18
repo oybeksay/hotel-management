@@ -21,7 +21,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(authUser.getAuthRole().name()));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + authUser.getAuthRole().name()));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return authUser.isActive();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package revolusion.hotelmanagement.entity.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,11 +16,20 @@ import revolusion.hotelmanagement.domein.AuthRole;
 @ToString
 @Entity
 public class AuthUser extends Auditable {
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
+    @JsonIgnore
+    private String password;
+
+    @Column(nullable = false, unique = true)
     @Email
     private String email;
-    private String password;
+
+    private boolean active;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AuthRole authRole = AuthRole.USER;
 }

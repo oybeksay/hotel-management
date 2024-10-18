@@ -4,12 +4,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import revolusion.hotelmanagement.domein.RoomCategory;
 import revolusion.hotelmanagement.dto.RoomDTO;
 import revolusion.hotelmanagement.entity.Hotel;
 import revolusion.hotelmanagement.entity.Room;
 import revolusion.hotelmanagement.mapper.RoomMapper;
 import revolusion.hotelmanagement.repository.HotelRepository;
 import revolusion.hotelmanagement.repository.RoomRepository;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -42,7 +45,24 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Page<Room> getAllRooms(Pageable pageable) {
+    public Page<Room> getAllRoomsByPerNightAndCity(Pageable pageable) {
         return roomRepository.findAll(pageable);
     }
+
+    @Override
+    public List<Room> getRoomByHotel(Integer id) {
+        return roomRepository.findByHotelId(id);
+    }
+
+    @Override
+    public List<Room> getAllRoomsByCategory(String city, RoomCategory roomCategory, int capacity, double pricePerNight) {
+        return roomRepository.findRooms(pricePerNight,city,roomCategory,capacity);
+    }
+
+    @Override
+    public List<Room> getAllRooms() {
+        return roomRepository.findAll();
+    }
+
+
 }

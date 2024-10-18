@@ -1,12 +1,10 @@
 package revolusion.hotelmanagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import revolusion.hotelmanagement.domein.OrderStatus;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,12 +21,10 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "guest_id")
-    @JsonBackReference
     private Guest guest;
 
     @ManyToOne
     @JoinColumn(name = "room_id")
-    @JsonBackReference
     private Room room;
 
     private LocalDate startDate;

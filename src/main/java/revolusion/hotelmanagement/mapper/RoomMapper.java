@@ -6,5 +6,7 @@ import revolusion.hotelmanagement.entity.Room;
 
 @Mapper(componentModel = "spring")
 public interface RoomMapper {
+
     Room fromDTO(RoomDTO roomDTO);
+
 }

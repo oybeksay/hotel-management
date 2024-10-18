@@ -29,6 +29,9 @@ public abstract class Auditable {
     @LastModifiedBy
     private Integer lastModifiedBy;
 
+    @Convert(converter = org.hibernate.type.NumericBooleanConverter.class)
+    private boolean deleted;
+
     @CreatedDate
     private LocalDateTime createdDate;
     @LastModifiedDate
