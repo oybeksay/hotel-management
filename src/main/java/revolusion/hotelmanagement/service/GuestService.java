@@ -5,8 +5,6 @@ import org.springframework.data.domain.Pageable;
 import revolusion.hotelmanagement.dto.GuestDTO;
 import revolusion.hotelmanagement.entity.Guest;
 
-import java.util.List;
-
 public interface GuestService {
     Guest saveGuest(GuestDTO guestDTO);
 

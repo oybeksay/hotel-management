@@ -3,7 +3,6 @@ package revolusion.hotelmanagement.entity.auth;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
-import org.checkerframework.checker.units.qual.C;
 
 @AllArgsConstructor
 @NoArgsConstructor

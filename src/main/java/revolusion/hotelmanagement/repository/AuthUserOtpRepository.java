@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
-import revolusion.hotelmanagement.entity.auth.AuthUser;
 import revolusion.hotelmanagement.entity.auth.AuthUserOtp;
 
 import java.time.LocalDateTime;

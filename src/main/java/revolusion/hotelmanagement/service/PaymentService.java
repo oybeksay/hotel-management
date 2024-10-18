@@ -1,7 +1,5 @@
 package revolusion.hotelmanagement.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import revolusion.hotelmanagement.dto.PaymentDTO;
 import revolusion.hotelmanagement.entity.Payment;
 

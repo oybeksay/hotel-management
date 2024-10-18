@@ -22,8 +22,6 @@ import revolusion.hotelmanagement.entity.auth.AuthUser;
 import revolusion.hotelmanagement.service.AuthUserService;
 import revolusion.hotelmanagement.service.ResetPasswordService;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/auth")
