@@ -18,10 +18,6 @@ public interface AuthUserRepository extends JpaRepository<AuthUser, Integer> {
 
     Optional<AuthUser> findByEmail(String email);
 
-    @Query("update AuthUser a set a.password = :password where a.id = :id")
-    @Modifying
-    void updatePasswordById(String password, Integer id);
-
     @Transactional
     @Modifying
     @Query("update AuthUser a set a.password = ?1 where a.email = ?2")

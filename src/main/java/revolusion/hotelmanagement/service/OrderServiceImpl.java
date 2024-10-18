@@ -29,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
     public Order saveOrder(OrderDTO orderDTO) {
         Room room = roomRepository.findById(orderDTO.getRoomId()).orElseThrow(() -> new RuntimeException("Room not found"));
         Guest guest = guestRepository.findById(orderDTO.getGuestId()).orElseThrow(() -> new RuntimeException("Guest not found"));
+
         List<Order> conflictingOrders = orderRepository.findConflictingOrders(
                 orderDTO.getRoomId(),
                 orderDTO.getStartDate(),

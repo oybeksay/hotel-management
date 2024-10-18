@@ -43,9 +43,4 @@ public class PaymentServiceImpl implements PaymentService {
     public void deletePaymentById(Integer id) {
         paymentRepository.deleteById(id);
     }
-
-    @Override
-    public Page<Payment> getAllPayment(Pageable pageable) {
-        return paymentRepository.findAll(pageable);
-    }
 }

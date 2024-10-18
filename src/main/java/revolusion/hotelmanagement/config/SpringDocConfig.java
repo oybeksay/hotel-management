@@ -9,6 +9,7 @@ import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
@@ -61,4 +62,11 @@ public class SpringDocConfig {
                 ));
     }
 
+    @Bean
+    public GroupedOpenApi groupedOpenApi() {
+        return GroupedOpenApi.builder()
+                .group("api")
+                .pathsToMatch("/**")
+                .build();
+    }
 }

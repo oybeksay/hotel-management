@@ -9,8 +9,6 @@ import revolusion.hotelmanagement.entity.Guest;
 import revolusion.hotelmanagement.mapper.GuestMapper;
 import revolusion.hotelmanagement.repository.GuestRepository;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class GuestServiceImpl implements GuestService {

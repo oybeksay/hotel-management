@@ -17,6 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService {
+
     private final RoomMapper roomMapper;
     private final RoomRepository roomRepository;
     private final HotelRepository hotelRepository;
