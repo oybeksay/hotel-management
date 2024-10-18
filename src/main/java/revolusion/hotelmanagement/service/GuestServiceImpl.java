@@ -43,9 +43,4 @@ public class GuestServiceImpl implements GuestService {
     public Page<Guest> getAllGuestsPage(Pageable pageable) {
         return guestRepository.findAll(pageable);
     }
-
-    @Override
-    public List<Guest> getAllGuests() {
-        return guestRepository.findAll();
-    }
 }

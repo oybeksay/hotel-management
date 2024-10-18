@@ -18,5 +18,4 @@ public interface GuestService {
 
     Page<Guest> getAllGuestsPage(Pageable pageable);
 
-    List<Guest> getAllGuests();
 }

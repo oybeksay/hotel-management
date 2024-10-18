@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/hotel?currentSchema=test_database'
-    username: postgres
-    password: oybek
+    url: 'jdbc:postgresql://localhost:5432/test_database?currentSchema=test_schema'
+    username: your_user
+    password: password
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -13,8 +13,8 @@ spring:
   mail:
     host: 'sandbox.smtp.mailtrap.io'
     port: 587
-    username: 89f66261c8d153
-    password: 132dd5a7858946
+    username: mailtrup_user
+    password: mailtrap_password
     properties:
       smtp:
       auth: true

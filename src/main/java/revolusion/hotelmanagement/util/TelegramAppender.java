@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TelegramAppender extends AppenderBase<LoggingEvent> {
-    private static final String botToken = "7474179192:AAFHZjuFrL-eb2mVRO-nImOZXIxwlPRxlXA";
-    private static final String chatID = "1808922480";
+    private static final String botToken = "YOUR_BOT_TOKEN";
+    private static final String chatID = "YOUR_CHAT_ID";
     private static final TelegramBot telegramBot = new TelegramBot(botToken);
 
     public TelegramAppender() {

@@ -1,1 +1,24 @@
+spring:
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/prod_database?currentSchema=prod_schema'
+    username: your_user
+    password: password
+    driver-class-name: org.postgresql.Driver
 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  mail:
+    host: smptp_server
+    port: 587
+    username: user
+    password: password
+    properties:
+      smtp:
+      auth: true
+      starttls:
+      enable: true
+      freemarker:
+      template-loader-path: 'classpath:/templates'
