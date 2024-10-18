@@ -47,11 +47,6 @@ public class AuthUserServiceImpl implements AuthUserService {
     }
 
     @Override
-    public void delete(Integer id) {
-        authUserRepository.deleteById(id);
-    }
-
-    @Override
     public String activateAccount(String code){
         AuthUserOtp authUserOtp = authUserOtpRepository.findByCode(code).orElseThrow(() -> new RuntimeException("Invalid code"));
         if (authUserOtp.getExpiryDate().isBefore(LocalDateTime.now())) {
