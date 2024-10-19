@@ -56,7 +56,7 @@ public class PaymentController {
                             schema = @Schema(implementation = Payment.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid input",
                     content = @Content) })
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Payment> updatePayment(@RequestBody Payment payment) {
         return ResponseEntity.ok(paymentService.updatePayment(payment));
     }

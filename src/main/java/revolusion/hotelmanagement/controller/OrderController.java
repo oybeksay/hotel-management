@@ -82,7 +82,7 @@ public class OrderController {
                     content = @Content(schema = @Schema(implementation = Order.class))),
             @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(schema = @Schema(implementation = Void.class)))
     })
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Order> updateOrder(@Parameter(description = "order") @RequestBody Order order) {
         return ResponseEntity.ok(orderService.updateOrder(order));
     }

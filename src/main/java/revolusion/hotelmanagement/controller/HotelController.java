@@ -86,7 +86,7 @@ public class HotelController {
                     content = @Content(schema = @Schema(implementation = Hotel.class))),
             @ApiResponse(responseCode = "404", description = "Hotel not found"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error")})
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Hotel> updateHotel(@RequestBody Hotel hotel) {
         return ResponseEntity.ok(hotelService.updateHotel(hotel));
     }

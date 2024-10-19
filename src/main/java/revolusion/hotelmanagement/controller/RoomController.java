@@ -106,7 +106,7 @@ public class RoomController {
                             schema = @Schema(implementation = Room.class)) }),
             @ApiResponse(responseCode = "400", description = "Bad request",
                     content = @Content) })
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Room> updateRoom(@RequestBody Room room) {
         return ResponseEntity.ok(roomService.updateRoom(room));
     }

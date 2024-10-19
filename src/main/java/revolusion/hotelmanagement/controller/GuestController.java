@@ -66,7 +66,7 @@ public class GuestController {
             @ApiResponse(responseCode = "200", description = "Updated the guest",
                     content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Guest.class))}),
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)})
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Guest> updateGuest(@Parameter(description = "Guest to update") @RequestBody Guest guest) {
         return ResponseEntity.ok(guestService.updateGuest(guest));
     }
