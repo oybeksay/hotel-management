@@ -43,6 +43,11 @@ public class HotelServiceImpl implements HotelService {
         return hotelRepository.findAll(pageable);
     }
 
+    @Override
+    public List<Hotel> getAll() {
+        return hotelRepository.findAll();
+    }
+
 
     @Override
     public List<Hotel> getHotelByNameOrRating(String name, String address, Integer rating) {

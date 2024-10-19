@@ -9,6 +9,8 @@ import revolusion.hotelmanagement.entity.Guest;
 import revolusion.hotelmanagement.mapper.GuestMapper;
 import revolusion.hotelmanagement.repository.GuestRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class GuestServiceImpl implements GuestService {
@@ -40,5 +42,10 @@ public class GuestServiceImpl implements GuestService {
     @Override
     public Page<Guest> getAllGuestsPage(Pageable pageable) {
         return guestRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Guest> getAllGuests() {
+        return guestRepository.findAll();
     }
 }

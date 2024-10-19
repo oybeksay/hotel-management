@@ -32,7 +32,7 @@ public class ResetPasswordServiceImpl implements ResetPasswordService {
                 .email(email).build();
         mailSenderService.sendResetPasswordMail(Map.of("to", email, "code", randomNumber));
         passwordResetTokenRepository.save(passwordResetToken);
-        return "Successfully created password reset token";
+        return "Successfully created password reset code";
     }
 
     @Override

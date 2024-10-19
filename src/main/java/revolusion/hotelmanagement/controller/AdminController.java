@@ -16,7 +16,6 @@ import revolusion.hotelmanagement.dto.RoomDTO;
 import revolusion.hotelmanagement.entity.Guest;
 import revolusion.hotelmanagement.entity.Order;
 import revolusion.hotelmanagement.entity.Room;
-import revolusion.hotelmanagement.repository.GuestRepository;
 import revolusion.hotelmanagement.service.GuestService;
 import revolusion.hotelmanagement.service.OrderService;
 import revolusion.hotelmanagement.service.RoomService;
@@ -31,8 +30,6 @@ import java.util.List;
 @Tag(name = "Admin", description = "Admin API")
 public class AdminController {
 
-
-    private final GuestRepository guestRepository;
     private final GuestService guestService;
     private final RoomService roomService;
     private final OrderService orderService;
@@ -45,7 +42,7 @@ public class AdminController {
                     content = @Content)})
     @GetMapping("/guests")
     public ResponseEntity<List<Guest>> getUsers() {
-        return ResponseEntity.ok(guestRepository.findAll());
+        return ResponseEntity.ok(guestService.getAllGuests());
     }
 
     @Operation(summary = "Update a user")

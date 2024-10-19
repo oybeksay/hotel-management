@@ -25,6 +25,7 @@ import revolusion.hotelmanagement.service.GuestService;
 @Tag(name = "Guests", description = "Guests API")
 @PreAuthorize("isAuthenticated()")
 public class GuestController {
+
     private final GuestService guestService;
 
     @Operation(summary = "Get all guests", description = "Get all guests", tags = {"Guests"})

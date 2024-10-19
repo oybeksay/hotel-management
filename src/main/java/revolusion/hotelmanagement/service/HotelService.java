@@ -18,5 +18,7 @@ public interface HotelService {
 
     Page<Hotel> getPagedHotels(Pageable pageable);
 
+    List<Hotel> getAll();
+
     List<Hotel> getHotelByNameOrRating(String name, String address, Integer rating);
 }

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
@@ -90,6 +91,7 @@ public class AuthUserController {
             @ApiResponse(responseCode = "204", description = "User updated successfully", content = @Content(schema = @Schema(implementation = Void.class)))
     })
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update")
     public ResponseEntity<Void> updateRole(@RequestBody AuthUser authUser) {
         authUserService.update(authUser);

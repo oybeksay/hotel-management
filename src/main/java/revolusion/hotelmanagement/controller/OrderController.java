@@ -27,6 +27,7 @@ import java.util.List;
 @Tag(name = "Order", description = "the Order API")
 @PreAuthorize("isAuthenticated()")
 public class OrderController {
+
     private final OrderService orderService;
 
     @Operation(summary = "Get all orders", description = "Get all orders", tags = {"Order"})

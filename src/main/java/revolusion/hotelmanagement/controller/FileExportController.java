@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/export")
+@RequiredArgsConstructor
 @PreAuthorize("isAuthenticated()")
 @Tag(name = "Export", description = "Export Data")
 public class FileExportController {
@@ -26,16 +28,12 @@ public class FileExportController {
     private final ExcelFileManagementService excelFileManagementService;
     private final CSVFileManagement csvFileManagement;
 
-    public FileExportController(ExcelFileManagementService excelFileManagementService, CSVFileManagement csvFileManagement) {
-        this.excelFileManagementService = excelFileManagementService;
-        this.csvFileManagement = csvFileManagement;
-    }
-
     @Operation(summary = "Export hotels to excel file", description = "Export all hotels to excel file")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Export hotels to excel file",
                     content = @Content(schema = @Schema(implementation = Void.class)))
     })
+    
     @GetMapping("/hotels/export/excel")
     public ResponseEntity<Void> exportHotelsToExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
