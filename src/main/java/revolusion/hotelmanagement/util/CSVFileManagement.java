@@ -1,6 +1,7 @@
 package revolusion.hotelmanagement.util;
 
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import revolusion.hotelmanagement.entity.Guest;
 import revolusion.hotelmanagement.entity.Hotel;
@@ -8,26 +9,24 @@ import revolusion.hotelmanagement.entity.Order;
 import revolusion.hotelmanagement.repository.GuestRepository;
 import revolusion.hotelmanagement.repository.HotelRepository;
 import revolusion.hotelmanagement.repository.OrderRepository;
+import revolusion.hotelmanagement.service.GuestService;
+import revolusion.hotelmanagement.service.HotelService;
+import revolusion.hotelmanagement.service.OrderService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class CSVFileManagement {
 
-    private final HotelRepository hotelRepository;
-    private final GuestRepository guestRepository;
-    private final OrderRepository orderRepository;
-
-    public CSVFileManagement(HotelRepository hotelRepository, GuestRepository guestRepository, OrderRepository orderRepository) {
-        this.hotelRepository = hotelRepository;
-        this.guestRepository = guestRepository;
-        this.orderRepository = orderRepository;
-    }
+    private final HotelService hotelService;
+    private final GuestService guestService;
+    private final OrderService orderService;
 
     public void generateHotelCsvFile(HttpServletResponse response) throws IOException {
-        List<Hotel> hotels = hotelRepository.findAll();
+        List<Hotel> hotels = hotelService.getAll();
 
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", "attachment; filename=\"hotels.csv\"");
@@ -52,7 +51,7 @@ public class CSVFileManagement {
 
 
     public void generateGuestCsvFile(HttpServletResponse response) throws IOException {
-        List<Guest> guests = guestRepository.findAll();
+        List<Guest> guests = guestService.getAllGuests();
 
         PrintWriter writer = response.getWriter();
 
@@ -72,7 +71,7 @@ public class CSVFileManagement {
     }
 
     public void generateOrderCsvFile(HttpServletResponse response) throws IOException {
-        List<Order> orders = orderRepository.findAll();
+        List<Order> orders = orderService.getAllOrder();
 
         PrintWriter writer = response.getWriter();
 
